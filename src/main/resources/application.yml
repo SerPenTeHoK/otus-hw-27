@@ -7,10 +7,31 @@ spring:
                 authentication: none
 logging:
       level:
-            root: INFO
+        org.springframework.boot.autoconfigure.logging: INFO
+        root: INFO
       pattern:
         console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
         file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
       file: application.log
 error:
   message: Name is required!
+
+# list of endpoints:  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints-exposing-endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health, info, logfile # '*'
+    jmx:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    logfile:
+      enabled: true
+
+info:
+  app:
+    name: "Try use actuator"
