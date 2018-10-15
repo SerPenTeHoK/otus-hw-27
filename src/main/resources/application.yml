@@ -24,7 +24,7 @@ management:
         include: metrics, health, info, logfile # '*'
     jmx:
       exposure:
-        include: '*'
+        include: info, health # '*'
   endpoint:
     health:
       enabled: true
